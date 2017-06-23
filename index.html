@@ -3,12 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>validform</title>
-	<link rel="stylesheet" href="css/baisc.css">
+	<link rel="stylesheet" href="css/basic.css">
+	<link rel="stylesheet" href="css/form.css">
 </head>
 <body>
-	<div class="warp">
+	<div class="wrap">
 		
+		<div class="input-items">
+			<lable class="lable icon-user"></lable>
+			<input type="text" class="ipt-text" placeholder="请输入手机号或者邮箱地址">
+		</div>
+
+		<div class="input-items">
+			<lable class="lable icon-key"></lable>
+			<input type="password" class="ipt-text err" placeholder="请输入密码">
+			<p class="tips">手机格式不对，或号码不存在。请重新输入</p>
+		</div>
+
+		<div class="input-items">
+			<lable class="lable icon-email"></lable>
+			<input type="text" class="ipt-text" placeholder="请输入邮箱">
+		</div>
+
+		<div class="input-items">
+			<lable class="lable icon-verify"></lable>
+			<input type="text" class="ipt-text ipt-verify" placeholder="请输入图形验证码">
+			<a class="verify-pic" href=""><img src="images/verify.jpg" alt="图形验证码"></a>
+		</div>
+
+		<div class="input-items">
+			<lable class="lable icon-verify"></lable>
+			<input type="text" class="ipt-text ipt-verify" placeholder="请输入手机验证码">
+			<a class="verify-phone" href="">获取短信验证码</a>
+		</div>
 		
+		<div class="input-items">
+			<button type="button" class="ipt-submit">提交注册</button>
+		</div>
 
 	</div>
 </body>
