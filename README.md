@@ -1,7 +1,7 @@
 # 表单验证插件
 
 ## UI设计
-![validform](ui/ui.jpg)
+![validform](UI/UI.jpg)
 
 
 ***
