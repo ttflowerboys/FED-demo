@@ -13,7 +13,7 @@
 ```
 
 * 给需要验证的表单绑定附加属性
-```
+```html
 <form class="J_validform">
 	<input type="text" placeholder="请输入图形验证码" datatype="*">
 	<input type="text" placeholder="请输入手机号" datatype="m">
