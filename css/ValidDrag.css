@@ -31,6 +31,8 @@
     top: 0px;
     width: 400px;
     font-size: 14px;
+}
+.slidetounlock{
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;

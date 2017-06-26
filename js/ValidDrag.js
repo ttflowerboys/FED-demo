@@ -11,7 +11,7 @@
         var options = $.extend(defaults, options);
         //添加背景，文字，滑块
         var html = '<div class="drag_bg"></div>'+
-                    '<div class="drag_text" onselectstart="return false;" unselectable="on">请按住滑块，拖动到最右边</div>'+
+                    '<div class="drag_text slidetounlock" onselectstart="return false;" unselectable="on">请按住滑块，拖动到最右边</div>'+
                     '<div class="handler handler_bg"></div>';
         this.append(html);
         
@@ -52,6 +52,7 @@
         //清空事件
         function dragOk(){
             handler.removeClass('handler_bg').addClass('handler_ok_bg');
+            text.removeClass('slidetounlock')
             text.text('验证通过');
             ValidDrag.css({'color': '#fff'});
             handler.off('mousedown');
