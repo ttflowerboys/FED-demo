@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/basic.css">
 	<link rel="stylesheet" href="css/form.css">
 	<link rel="stylesheet" href="font/style.css">
+	<link rel="stylesheet" href="css/ValidDrag.css">
 </head>
 <body>
 <div class="wrap">
@@ -41,6 +42,10 @@
 			<input type="text" class="ipt-text ipt-verify" placeholder="请输入手机验证码" datatype="*">
 			<a class="verify-phone" href="">获取短信验证码</a>
 		</div>
+
+		<div class="input-items">
+			<div class="J_dragVerify"></div>
+		</div>
 		
 		<div class="input-items">
 			<!-- <button type="button" class="ipt-submit">提交注册</button> -->
@@ -56,6 +61,14 @@
 	
 	<script>
 		$(".J_validform").Validform();
+	</script>
+	
+	<!-- How use ValidDrag -->
+	<script src="js/ValidDrag.js"></script>
+	<script>
+		$('.J_dragVerify').ValidDrag({
+			'submit':$('.ipt-submit')
+		});
 	</script>
 </body>
 </html>

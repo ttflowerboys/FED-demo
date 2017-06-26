@@ -79,8 +79,9 @@
 .input-items .ipt-submit:hover{
 	background: #0096e8;
 }
-.input-items .ipt-submit.disabled{
+.input-items .ipt-submit.disabled,.input-items .ipt-submit[disabled]{
 	background: #999;
+	cursor: default;
 }
 .input-items .ipt-submit.loading{
 	background: #15aafb;
