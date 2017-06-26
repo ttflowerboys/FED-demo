@@ -56,6 +56,34 @@ $(function(){
  * 用","分隔表示规则累加；如：`datatype="zh,s2-4"`，表示要`符合自定义类型"zh"，也要符合规则"s2-4"`
  * 用"|"分隔表示规则多选一，即只要符合其中一个规则就可以通过验证，绑定的规则会依次验证，只要验证通过，后面的规则就会忽略不再比较。如绑定`datatype="m|e"`，表示既`可以填写手机号码，也能填写邮箱地址`，如果知道填入的是手机号码，那么就不会再检测他是不是邮箱地址；。
 
+***
+
+## 使用拖拽验证码
+* 引入样式
+```html
+<link rel="stylesheet" href="css/ValidDrag.css">
+```
+
+* 引入js
+```html
+<script src="js/ValidDrag.js"></script>
+```
+
+* HTML结构
+```html
+<div class="J_dragVerify"></div>
+```
+
+* 初始化
+```javascript
+$(function(){
+	$('.J_dragVerify').ValidDrag({
+		'submit':$('.ipt-submit')  // submit，为提交按扭选择器
+	});
+})
+```
+
+
 
 
 ## UI设计
