@@ -87,7 +87,7 @@ $(function(){
 
 
 ## UI设计
-![validform](UI/UI.jpg)
+![validform](UI/UI2.jpg)
 
 ***
 
