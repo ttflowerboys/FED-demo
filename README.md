@@ -8,17 +8,17 @@
 ``` html
  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
 
- <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
  <script src="https://cdn.bootcss.com/bootstrap/3.2.0/js/modal.min.js"></script>
 
- <link href="https://cdn.bootcss.com/cropper/2.3.4/cropper.min.css" rel="stylesheet">
+ <link href="https://cdn.bootcss.com/cropper/2.3.4/cropper.min.css" rel="stylesheet" />
  <script src="https://cdn.bootcss.com/cropper/2.3.4/cropper.min.js"></script>
  <script src="https://cdn.bootcss.com/html2canvas/0.4.1/html2canvas.min.js"></script>
 ```
 
 * 自定义样式及主函数（直接引入）
-```
-<link href="css/customCropper.css" rel="stylesheet">
+```html
+<link href="css/customCropper.css" rel="stylesheet" />
 <script src="js/customCropper.js"></script>
 ```
 
@@ -83,7 +83,7 @@
 ```
 
 * 执行函数（根据业务需求，配置相关信息及回调函数即可）
-```javascript
+```html
  <script type="text/javascript">
 
 	$(".avatar-save").on("click", function() {
