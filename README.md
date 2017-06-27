@@ -1,5 +1,9 @@
 # 三镇网络科技有限公司
 
+## 资源网站
+* Cropper插件：`https://github.com/fengyuanchen/cropper`
+* UI参考：`http://www.sucaihuo.com/jquery/12/1289/demo/`
+
 ## 说明
 * 营销官网：`http://www.threetowns.cn`
 * 技术支持：`http://www.flowerboys.cn`
