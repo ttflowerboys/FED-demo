@@ -71,24 +71,11 @@
 									<button class="btn customBlue icon-repeat" data-method="rotate" data-option="90" type="button"> 向右旋转</button>
 								</div>
 							</div>
-							<div class="col-md-5" style="text-align: right;">								
-								<button class="btn customBlue icon-arrows" data-method="setDragMode" data-option="move" type="button" title="移动">
-								<span class="docs-tooltip">
-								</span>
-							  </button>
-							  <button type="button" class="btn customBlue icon-search-plus" data-method="zoom" data-option="0.1" title="放大图片">
-								<span class="docs-tooltip">
-								  <!--<span class="icon-search-plus"></span>-->
-								</span>
-							  </button>
-							  <button type="button" class="btn customBlue icon-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片">
-								<span class="docs-tooltip">
-								  <!--<span class="icon-search-minus"></span>-->
-								</span>
-							  </button>
-							  <button type="button" class="btn customBlue icon-refresh" data-method="reset" title="重置图片">
-									<span class="docs-tooltip">
-							   </button>
+							<div class="col-md-5" style="text-align: right;">
+								<button class="btn customBlue icon-arrows" data-method="setDragMode" data-option="move" type="button" title="移动"></button>
+							    <button type="button" class="btn customBlue icon-search-plus" data-method="zoom" data-option="0.1" title="放大图片"></button>
+							    <button type="button" class="btn customBlue icon-search-minus" data-method="zoom" data-option="-0.1" title="缩小图片"></button>
+							    <button type="button" class="btn customBlue icon-refresh" data-method="reset" title="重置图片"></button>
 							</div>
 							<div class="col-md-3">
 								<button class="btn customBlue btn-block avatar-save icon-save" type="button"> 保存修改</button>
@@ -104,57 +91,6 @@
 
 <script src="https://cdn.bootcss.com/html2canvas/0.4.1/html2canvas.min.js"></script>
 <script type="text/javascript">
-	var fn = {
-		beforeSend: function(){
-			$('.avatar-save').attr('disabled','disabled').text('正在保存...')
-		},
-		complete: function(){
-			$('.avatar-save').removeAttr('disabled').text('保存修改')
-			$('.avatar-form .close').trigger('click')
-		},
-		imagesAjax: function(src){
-			var data = {};
-			data.img = src;
-			data.jid = $('#jid').val();
-			$.ajax({
-				url: "your-upload-image.php",
-				data: data,
-				type: "POST",
-				dataType: 'json',
-				beforeSend: fn.beforeSend,
-				complete: fn.complete,
-				success: function(re) {
-					if(re.status == '1') {
-						$('.user_pic img').attr('src',src );
-					}
-				},
-				error: function(res){
-					alert('error code:'+res.status);
-				}
-			});
-		}
-	}
-
-	//做个下简易的验证  大小 格式 
-	$('#avatarInput').on('change', function(e) {
-		var filemaxsize = 1024 * 5;//5M
-		var target = $(e.target);
-		var Size = target[0].files[0].size / 1024;
-		if(Size > filemaxsize) {
-			alert('图片过大，请重新选择!');
-			$(".avatar-wrapper").childre().remove;
-			return false;
-		}
-		if(!this.files[0].type.match(/image.*/)) {
-			alert('请选择正确的图片!')
-		} else {
-			var filename = document.querySelector("#avatar-name");
-			var texts = document.querySelector("#avatarInput").value;
-			var teststr = texts;
-			testend = teststr.match(/[^\\]+\.[^\(]+/i);
-			filename.innerHTML = testend;
-		}	
-	});
 
 	$(".avatar-save").on("click", function() {
 		var img_lg = document.getElementById('imageHead');
@@ -163,16 +99,20 @@
 			taintTest: false,
 			onrendered: function(canvas) {
 				canvas.id = "mycanvas";
-				//生成base64图片数据
 				var dataUrl = canvas.toDataURL("image/jpeg");
 				var newImg = document.createElement("img");
 				newImg.src = dataUrl;
-				fn.imagesAjax(dataUrl)
+				fn.imagesAjax({
+					'url':'http://www.domain.com/updata.php',  // 配置后台上传地址
+					'data':{                                   // 配置后台上传AJAX的data属性
+						'img':dataUrl                          // 图片是 dataUrl
+					}
+				},function(){
+					alert('上传成功啦！');			// 上传成功后的回调函数
+				})
 			}
 		});
-	})
-
-	
+	})	
 
 </script>
 

@@ -197,8 +197,9 @@
 				this.$img = $('<img src="' + this.url + '">');
 				this.$avatarWrapper.empty().html(this.$img);
 				this.$img.cropper({
-					aspectRatio: 1,
+					aspectRatio: 1,  // 1:1
 					viewMode: 1,
+					cropBoxResizable: false,
 					preview: this.$avatarPreview.selector,
 					strict: false,
 //					crop: function(data) {
@@ -332,4 +333,57 @@
 });
 
 
+var fn = {
+	beforeSend: function(){
+		$('.avatar-save').attr('disabled','disabled').text('正在保存...')
+	},
+	complete: function(){
+		$('.avatar-save').removeAttr('disabled').text('保存修改')
+		$('.avatar-form .close').trigger('click')
+	},
+	imagesAjax: function(options,callback){
+		var defaults = {};
 
+		var settings = $.extend(true, defaults, options);
+		$.ajax({
+			url: settings.url,  // 配置您后台的上传地址
+			data: settings.data,
+			type: "POST",
+			dataType: 'json',
+			beforeSend: fn.beforeSend,
+			complete: fn.complete,
+			success: function(re) {
+				// 上传成功后，执行的回调函数
+				if (typeof callback === 'function' && callback()) {
+					callback()
+				}
+			},
+			error: function(res){
+				alert('error code:'+res.status);
+			}
+		});
+	}
+}
+
+$(function(){
+	//做个下简易的验证  大小 格式 
+	$('#avatarInput').on('change', function(e) {
+		var filemaxsize = 1024 * 5;//5M
+		var target = $(e.target);
+		var Size = target[0].files[0].size / 1024;
+		if(Size > filemaxsize) {
+			alert('图片过大，请重新选择!');
+			$(".avatar-wrapper").childre().remove;
+			return false;
+		}
+		if(!this.files[0].type.match(/image.*/)) {
+			alert('请选择正确的图片!')
+		} else {
+			var filename = document.querySelector("#avatar-name");
+			var texts = document.querySelector("#avatarInput").value;
+			var teststr = texts;
+			testend = teststr.match(/[^\\]+\.[^\(]+/i);
+			filename.innerHTML = testend;
+		}	
+	});
+})
