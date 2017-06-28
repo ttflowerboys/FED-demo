@@ -194,16 +194,10 @@
 					cropBoxResizable: false,
 					preview: this.$avatarPreview.selector,
 					strict: false,
-//					crop: function(data) {
-//						var json = [
-//							'{"x":' + data.x,
-//							'"y":' + data.y,
-//							'"height":' + data.height,
-//							'"width":' + data.width,
-//							'"rotate":' + data.rotate + '}'
-//						].join();
-//						_this.$avatarData.val(json);
-//					}
+			        crop: function (e) {
+			            $('.dataHeight').val(Math.round(e.height));
+						$('.dataWidth').val(Math.round(e.width));
+			        }
 				});
 
 				this.active = true;

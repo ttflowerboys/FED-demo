@@ -48,10 +48,20 @@
                             <div class="col-md-9">
                                 <div class="avatar-wrapper"></div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3" style="width: 198px;padding: 0;">
                                 <div class="avatar-preview preview-lg" id="imageHead"></div>
-                                <!--<div class="avatar-preview preview-md"></div>
-                                <div class="avatar-preview preview-sm"></div>-->
+                                <!-- <div class="avatar-preview preview-md"></div>
+                                <div class="avatar-preview preview-sm"></div> -->
+                                <div class="input-group">
+						            <label class="input-group-addon" for="dataWidth">宽</label>
+						            <input type="text" class="form-control dataWidth" placeholder="width">
+						            <span class="input-group-addon">px</span>
+						        </div>
+						        <div class="input-group">
+						        	<label class="input-group-addon" for="dataHeight">高</label>
+						        	<input type="text" class="form-control dataHeight" placeholder="height">
+						            <span class="input-group-addon">px</span>
+						        </div>
                             </div>
                         </div>
                         <div class="row avatar-btns">
@@ -86,7 +96,7 @@
 $(function() {
 	// 初始化
 	new CropAvatar($('#crop-avatar'),{
-		aspectRatio: 2/1   // 图片裁切比例（宽/高）
+		aspectRatio: 1/1   // 图片裁切比例（宽/高）
 	});
 
 	// 表单提交事件
