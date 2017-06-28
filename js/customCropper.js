@@ -197,7 +197,7 @@
 				this.$img = $('<img src="' + this.url + '">');
 				this.$avatarWrapper.empty().html(this.$img);
 				this.$img.cropper({
-					aspectRatio: 1,  // 1:1
+					aspectRatio: 2 / 1,  // 1:1
 					viewMode: 1,
 					cropBoxResizable: false,
 					preview: this.$avatarPreview.selector,
@@ -341,8 +341,10 @@ var fn = {
 		$('.avatar-save').removeAttr('disabled').text('保存修改')
 		$('.avatar-form .close').trigger('click')
 	},
-	imagesAjax: function(options,callback){
-		var defaults = {};
+	imagesAjax: function(options,callback,dataUrl){
+		var defaults = {
+			data: { 'uploadImg': dataUrl }
+		};
 
 		var settings = $.extend(true, defaults, options);
 		$.ajax({
@@ -360,6 +362,20 @@ var fn = {
 			},
 			error: function(res){
 				alert('error code:'+res.status);
+			}
+		});
+	},
+	upload: function(options,callback) {
+		var img_lg = document.getElementById('imageHead');
+		html2canvas(img_lg, {
+			allowTaint: true,
+			taintTest: false,
+			onrendered: function(canvas) {
+				canvas.id = "mycanvas";
+				var dataUrl = canvas.toDataURL("image/jpeg");
+				var newImg = document.createElement("img");
+				newImg.src = dataUrl;
+				fn.imagesAjax(options,callback,dataUrl)
 			}
 		});
 	}
