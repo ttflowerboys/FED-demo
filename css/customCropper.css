@@ -1,4 +1,15 @@
 @import url(../font/style.css);
+.flex-nowrap {
+    -webkit-flex-wrap: nowrap!important;
+    -ms-flex-wrap: nowrap!important;
+    flex-wrap: nowrap!important;
+}
+.d-flex {
+    display: -webkit-box!important;
+    display: -webkit-flex!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
 .avatar-view {
   display: block;
   width: 220px;
@@ -102,10 +113,19 @@
 }
 .input-group{margin-bottom: 10px;}
 .btn-group{margin-bottom: 10px;}
-.avatar-btns .btn-group {
+/* .avatar-btns .btn-group {
   margin-right: 5px;
+} */
+.avatar-toggles{
+  position: relative;
+  height: 364px;
 }
-
+.avatar-toggles .btn-group{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
 .customBlue{
   border-radius: 3px;
   background-color: #15aafb;
@@ -113,7 +133,7 @@
   color: #fff!important;
   height: 35px;
 }
-.customBlue:hover{
+.customBlue.active,.customBlue:hover{
   background-color: #0096e8;
   border-color: #0096e8;
 }
