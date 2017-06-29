@@ -71,7 +71,7 @@ $(function () {
     var $this = $(this);
     var data = $this.data();
     var $target;
-    var result;
+    var CropperResult;
 
     if ($this.prop('disabled') || $this.hasClass('disabled')) {
       return;
@@ -96,7 +96,7 @@ $(function () {
         $image.cropper('clear');
       }
 
-      result = $image.cropper(data.method, data.option, data.secondOption);
+      CropperResult = $image.cropper(data.method, data.option, data.secondOption);
 
       if (data.method === 'rotate') {
         $image.cropper('crop');
@@ -109,16 +109,9 @@ $(function () {
           break;
 
         case 'getCroppedCanvas':
-          if (result) {
-
-            // Bootstrap's Modal
-            //$('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
-            $save.attr('href', result.toDataURL('image/jpeg'));
-
-            /*if (!$download.hasClass('disabled')) {
-              $download.attr('href', result.toDataURL('image/jpeg'));
-              console.log(result.toDataURL('image/jpeg'))
-            }*/
+          if (CropperResult) {
+            $save.attr('href', CropperResult.toDataURL('image/jpeg'));
+            setTimeout(uploadCropper,1)
           }
 
           break;
@@ -133,9 +126,9 @@ $(function () {
           break;
       }
 
-      if ($.isPlainObject(result) && $target) {
+      if ($.isPlainObject(CropperResult) && $target) {
         try {
-          $target.val(JSON.stringify(result));
+          $target.val(JSON.stringify(CropperResult));
         } catch (e) {
           console.log(e.message);
         }
@@ -177,6 +170,4 @@ $(function () {
   }
 
 });
-
-
 

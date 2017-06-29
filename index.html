@@ -97,23 +97,22 @@
 </div>
 <!-- 弹窗内容 - 结束 -->
 
-<!-- <script src="https://cdn.bootcss.com/html2canvas/0.4.1/html2canvas.min.js"></script> -->
-<script type="text/javascript">
-$(function() {
 
-	// 表单提交事件
-    $(".avatar-save").on("click", function(){
-        fn.upload({
-            'url':'/upload.php',  // 配置后台上传地址
-            'data':{              // 配置后台上传AJAX的data属性
-                'action': 'upload'
-            }
-        },function(re){
-            alert('上传成功啦！');// 上传成功后的回调函数(callback)
-        })
-    })
+<script type="text/javascript">
+
+    function uploadCropper(){
+    	// First: Get new cropper result.
+    	var newPic = $('.avatar-save').attr('href');
+    	
+    	// Second: Do everything what you want to do.
+    	// For Example:
+    	$('.avatar-form .close').trigger('click'); // I want to close the modal.
+    	$('body').append('<img id="pic">');        // I want to create img and show the result.
+    	$('#pic').attr('src',newPic);
+
+    }
 	
-});
+
 </script>
 
 </body>
