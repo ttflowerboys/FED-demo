@@ -28,9 +28,10 @@
  <button type="button" class="btn customBlue"  data-toggle="modal" data-target="#avatar-modal" style="margin: 10px;">修改头像</button>
 
  <!-- 弹窗内容 - 开始 -->
- <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+<div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+            <!--<form class="avatar-form" action="upload-logo.php" enctype="multipart/form-data" method="post">-->
             <form class="avatar-form">
                 <div class="modal-header">
                     <button class="close" data-dismiss="modal" type="button">&times;</button>
@@ -38,25 +39,41 @@
                 </div>
                 <div class="modal-body">
                     <div class="avatar-body">
-                        <div class="avatar-upload">
-                            <input class="avatar-src" name="avatar_src" type="hidden">
-                            <input class="avatar-data" name="avatar_data" type="hidden">
-                            <label for="avatarInput" style="line-height: 35px;">图片上传</label>
-                            <button class="btn customBlue"  type="button" style="height: 35px;" onClick="$('input[id=avatarInput]').click();">请选择图片</button>
-                            <span id="avatar-name"></span>
-                            <input class="avatar-input hide" id="avatarInput" name="avatar_file" type="file"></div>
                         <div class="row">
                             <div class="col-md-9">
-                                <div class="avatar-wrapper"></div>
+                                <div class="avatar-wrapper"><img id="image" src="" alt=""></div>
                             </div>
                             <div class="col-md-3">
+                              <div class="avatar-toggles">
                                 <div class="avatar-preview preview-lg" id="imageHead"></div>
-                                <!--<div class="avatar-preview preview-md"></div>
-                                <div class="avatar-preview preview-sm"></div>-->
+                                <!-- <div class="avatar-preview preview-md"></div>
+                                <div class="avatar-preview preview-sm"></div> -->
+                                <div class="input-group">
+						            <label class="input-group-addon" for="dataWidth">宽</label>
+						            <input type="text" class="form-control" id="dataWidth" placeholder="width">
+						            <span class="input-group-addon">px</span>
+						        </div>
+						        <div class="input-group">
+						        	<label class="input-group-addon" for="dataHeight">高</label>
+						        	<input type="text" class="form-control" id="dataHeight" placeholder="height">
+						            <span class="input-group-addon">px</span>
+						        </div>
+						        <div class="btn-group d-flex flex-nowrap" data-toggle="buttons">
+						          <label class="btn customBlue"><input type="radio" class="sr-only" id="aspectRatio0" name="aspectRatio" value="1.7777777777777777">16:9</label>
+						          <label class="btn customBlue"><input type="radio" class="sr-only" id="aspectRatio1" name="aspectRatio" value="1.3333333333333333">4:3</label>
+						          <label class="btn customBlue"><input type="radio" class="sr-only" id="aspectRatio2" name="aspectRatio" value="1">1:1</label>
+						          <label class="btn customBlue"><input type="radio" class="sr-only" id="aspectRatio4" name="aspectRatio" value="NaN">Free</label>
+						        </div>
+						      </div>
                             </div>
                         </div>
-                        <div class="row avatar-btns">
+                        <div class="row avatar-btns docs-buttons">
                             <div class="col-md-4">
+                            	<div class="btn-group">
+                            	    <label class="btn customBlue icon-upload" for="inputImage" title="上专图片">
+						                <input type="file" class="sr-only J_inputImage" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+						            </label>
+						        </div>
                                 <div class="btn-group">
                                     <button class="btn customBlue icon-undo" data-method="rotate" data-option="-90" type="button"> 向左旋转</button>
                                 </div>
@@ -71,7 +88,7 @@
                                 <button type="button" class="btn customBlue icon-refresh" data-method="reset" title="重置图片"></button>
                             </div>
                             <div class="col-md-3">
-                                <button class="btn customBlue btn-block avatar-save icon-save" type="button"> 保存修改</button>
+                                <button class="btn customBlue btn-block avatar-save icon-save" type="button" data-method="getCroppedCanvas"> 保存修改</button>
                             </div>
                         </div>
                     </div>
@@ -80,35 +97,25 @@
         </div>
     </div>
 </div>
+<!-- 弹窗内容 - 结束 -->
 ```
 
 * 执行函数（根据业务需求，配置相关信息及回调函数即可）
 ```html
  <script type="text/javascript">
 
-	$(".avatar-save").on("click", function() {
-		var img_lg = document.getElementById('imageHead');
-		html2canvas(img_lg, {
-			allowTaint: true,
-			taintTest: false,
-			onrendered: function(canvas) {
-				canvas.id = "mycanvas";
-				var dataUrl = canvas.toDataURL("image/jpeg");
-				var newImg = document.createElement("img");
-				newImg.src = dataUrl;
-				fn.imagesAjax({
-					'url':'http://www.domain.com/updata.php',  // 配置后台上传地址
-					'data':{                                   // 配置后台上传AJAX的data属性
-						'img':dataUrl                          // 图片是 dataUrl
-					}
-				},function(){
-					alert('上传成功啦！');			// 上传成功后的回调函数
-				})
-			}
-		});
-	})	
+    function uploadCropper(){
+    	// First: Get new cropper result.
+    	var newPic = $('.avatar-save').attr('href');
 
- </script>
+    	// Do everything what you want to do.
+    	// For Example:
+    	 $('.avatar-form .close').trigger('click');
+    	 $('body').append('<img id="pic">');
+    	 $('#pic').attr('src',newPic);
+
+    }
+</script>
 ```
 
 ## 资源网站
