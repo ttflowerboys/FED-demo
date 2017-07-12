@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+// 配置间距
+$gray-spacing: 5px;
+//$setting-weibo-spacing: 10px;
+
+// 配置位置
+//$setting-position: center;
+//$setting-weibo-position: 10px;
+
+// 配置sprite的布局方式  // vertical/horizontal/diagonal/smart
+$gray-layout: vertical;
+
+// 自动输出尺寸
+$gray-sprite-dimensions: true;
+
+@import "compass/utilities/sprites";
+@import "gray/*.png";
+@include all-gray-sprites;
+
+// @import "compass/utilities/sprites";
+// @import "share/*.png";
+// @include all-share-sprites;  
+
+// 测试此段代码时应将$setting-sprite-dimensions值设为false
+// .special {
+//  @include setting-sprite(compass);
+//  width: setting-sprite-width(compass);
+//  height: setting-sprite-height(compass);
+// }

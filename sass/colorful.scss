@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+// 配置间距
+$colorful-spacing: 5px;
+
+// 配置位置
+//$colorful-position: 5px;
+
+// 配置sprite的布局方式  // vertical/horizontal/diagonal/smart
+$colorful-layout: vertical;
+
+// 自动输出尺寸
+$colorful-sprite-dimensions: true;
+
+@import "compass/utilities/sprites";
+@import "colorful/*.png";
+@include all-colorful-sprites;
+
+
