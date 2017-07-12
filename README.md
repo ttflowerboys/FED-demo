@@ -37,25 +37,26 @@
 ```css
 @font-face {
   font-family: 'icon-font';
-	src:url('fonts/icomoon.eot');
-	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('fonts/icomoon.ttf') format('truetype'),
-		url('fonts/icomoon.woff') format('woff'),
-		url('fonts/icomoon.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  src:url('fonts/icomoon.eot');
+  src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+      url('fonts/icomoon.ttf') format('truetype'),
+      url('fonts/icomoon.woff') format('woff'),
+      url('fonts/icomoon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
+
 .icon-ui {
-	font-family: 'icon-font';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  font-family: 'icon-font';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 ```
 
@@ -73,26 +74,28 @@
 ```css
 @font-face {
   font-family: 'icon-font';
-	src:url('fonts/icomoon.eot');
-	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('fonts/icomoon.ttf') format('truetype'),
-		url('fonts/icomoon.woff') format('woff'),
-		url('fonts/icomoon.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  src:url('fonts/icomoon.eot');
+  src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+      url('fonts/icomoon.ttf') format('truetype'),
+      url('fonts/icomoon.woff') format('woff'),
+      url('fonts/icomoon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
+
 [class^="icon-"], [class*=" icon-"] {
-	font-family: 'icon-font';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  font-family: 'icon-font';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 .icon-chrome:before  { content: "\e600"; }
 .icon-firefox:before { content: "\e601"; }
 .icon-IE:before      { content: "\e602"; }
